@@ -37,7 +37,10 @@ export default class Equipo extends Component {
     }
 
     return (
-      <div>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+              <div class="border p-3">
       <h1 className="text fw-bold mb-4"> Equipo: {this.state.equipo.nombre}</h1>
         
         <table className="table">
@@ -82,6 +85,10 @@ export default class Equipo extends Component {
             <div className="text-center">
             <NavLink to={"/jugadores/" + this.state.equipo.idEquipo + "/" + this.state.equipo.nombre} className="btn btn-primary">Ver Jugadores</NavLink> &nbsp; &nbsp;
             <NavLink to="/" className="btn btn-secondary">Volver</NavLink> 
+            </div>
+          </div>
+        </div>
+
             </div>
           </div>
         </div>

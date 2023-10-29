@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 export default class Apuestas extends Component {
   state = {
     apuestas: [],
-    status: false,
+    statusLoad: false,
+    statusDelete: false,
   }
 
   loadApuestas() {
@@ -17,10 +18,24 @@ export default class Apuestas extends Component {
       .then(response => {
         this.setState({
           apuestas: response.data,
-          status: true
+          statusLoad: true
         });
       });
   }
+
+  eliminarApuesta(idApuesta) {
+    const request = "api/apuestas/" + idApuesta ;
+    const url = Global.urlApi + request;
+    console.log("ELIMINANDO...." + url);
+    axios.delete(url)
+      .then(response => {
+        this.setState({
+          statusDelete: true
+        });
+
+      });
+  }
+
 
   componentDidMount() {
     this.loadApuestas();
@@ -39,13 +54,16 @@ export default class Apuestas extends Component {
         <div className="d-flex justify-content-center">
           <NavLink to="/realizarapuesta" className="btn btn-primary btn-lg btn-block m-4" style={customButtonStyle}>Realizar Apuesta</NavLink>
         </div>
-        {this.state.status && this.state.apuestas.length > 0 && (
+        {this.state.statusLoad && (
           <table className="table table-secondary table-bordered">
             <thead>
               <tr>
                 <th>Usuario</th>
                 <th>Resultado</th>
                 <th>Fecha</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+
               </tr>
             </thead>
             <tbody>
@@ -54,6 +72,8 @@ export default class Apuestas extends Component {
                   <td>{apuesta.usuario}</td>
                   <td>{apuesta.resultado}</td>
                   <td>{apuesta.fecha}</td>
+                  <td> <NavLink className="btn btn-warning" to={"/editarapuesta/" + apuesta.idApuesta}>Modificar </NavLink> </td>
+                  <td> <button className="btn btn-danger" onClick={() => this.eliminarApuesta(apuesta.idApuesta)}>Eliminar </button> </td>
                 </tr>
               ))}
             </tbody>
