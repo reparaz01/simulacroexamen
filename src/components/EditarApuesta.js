@@ -35,8 +35,7 @@ export default class EditarApuesta extends Component {
             apuesta : {}
         };
 
-        axios.put(url, apuesta)
-            .then((response) => {
+        axios.put(url, apuesta).then((response) => {
                 this.setState({
                     status: true,
                 });
@@ -44,7 +43,7 @@ export default class EditarApuesta extends Component {
     }
 
 
-    loadApuesta(idApuesta) {
+    loadApuesta = (idApuesta) => {
         const request = "api/apuestas";
         const url = Global.urlApi + request;
     

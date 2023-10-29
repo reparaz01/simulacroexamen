@@ -22,7 +22,7 @@ export default class MenuRutas extends Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.loadEquipos();
   }
 

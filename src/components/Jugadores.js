@@ -9,7 +9,7 @@ export default class Jugadores extends Component {
     status: false,
   }
 
-  loadJugadores() {
+  loadJugadores = () => {
     const request = "api/Jugadores/JugadoresEquipos/" + this.props.idEquipo;
     const url = Global.urlApi + request;
     axios.get(url).then(response => {
@@ -20,7 +20,7 @@ export default class Jugadores extends Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.loadJugadores();
   }
 

@@ -9,7 +9,7 @@ export default class Equipo extends Component {
     equipoCargado: false,
   }
 
-  loadEquipo() {
+  loadEquipo = () => {
     const url = Global.urlApi + "api/equipos/" + this.props.idEquipo;
 
     axios.get(url)
@@ -21,7 +21,7 @@ export default class Equipo extends Component {
       });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.loadEquipo();
   }
 

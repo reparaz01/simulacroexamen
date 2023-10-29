@@ -13,7 +13,8 @@ export default class RealizarApuesta extends Component {
         status: false,
     };
 
-    insertApuesta = () => {
+    insertApuesta = (e) => {
+        e.preventDefault();
         const usuario = this.cajaUsuario.current.value;
         const resultado = this.cajaResultado.current.value;
         const fecha = this.cajaFecha.current.value;

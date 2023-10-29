@@ -10,7 +10,7 @@ export default class Apuestas extends Component {
     statusDelete: false,
   }
 
-  loadApuestas() {
+  loadApuestas = () => {
     const request = "api/apuestas";
     const url = Global.urlApi + request;
 
@@ -23,7 +23,7 @@ export default class Apuestas extends Component {
       });
   }
 
-  eliminarApuesta(idApuesta) {
+  eliminarApuesta = (idApuesta) => {
     const request = "api/apuestas/" + idApuesta ;
     const url = Global.urlApi + request;
     console.log("ELIMINANDO...." + url);
